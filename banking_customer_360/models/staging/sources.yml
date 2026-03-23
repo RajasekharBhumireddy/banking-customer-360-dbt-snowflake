@@ -1,0 +1,35 @@
+version: 2
+
+sources:
+  - name: staging
+    database: BANKING_360
+    schema: STAGING
+    tables:
+      - name: customers
+        columns:
+          - name: customer_id
+            tests:
+              - not_null
+              - unique
+
+      - name: transactions
+        columns:
+          - name: txn_id
+            tests:
+              - not_null
+              - unique
+          - name: customer_id
+            tests:
+              - not_null
+
+      - name: app_events
+        columns:
+          - name: customer_id
+            tests:
+              - not_null
+
+      - name: support_tickets
+        columns:
+          - name: ticket_id
+            tests:
+              - not_null
